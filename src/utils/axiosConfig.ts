@@ -3,7 +3,7 @@ import axios from "axios";
 
 // dotenv.config({ path: ".env.local" });
 
-const baseURL = process.env.NEXT_PUBLIC_API_REQUEST_BASE_URL || "https://developer.cribe.org/api/recruitment/";
+const baseURL = process.env.NEXT_PUBLIC_API_REQUEST_BASE_URL || "https://developer.cribe.org/api/recruitment/v1";
 
 if (!baseURL) {
   throw new Error("NEXT_PUBLIC_API_REQUEST_BASE_URL is not defined");
