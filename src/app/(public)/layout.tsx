@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import type { Metadata } from "next";
+import Image from "next/image";
 import PublicRedirectGuard from "../Context/PublicRedirectGuard";
 
 export const metadata: Metadata = {

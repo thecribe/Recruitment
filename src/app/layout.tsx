@@ -27,10 +27,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const countries = getNames();
-  let job_type = [];
-  let department = [];
-  let visa_type = [];
-  let site_data = {};
+  let job_type;
+  let department;
+  let visa_type;
+  let site_data;
 
   try {
     const resJob = await instance.get(`/job-type?limit=${0}&offset=${0}`);
@@ -43,9 +43,9 @@ export default async function RootLayout({
     visa_type = resVisa?.data.data ?? [];
 
     const siteData = await instance.get(`/site-details`);
-
-    site_data = siteData?.data.data[0] ?? {};
+    site_data = siteData?.data.data[0] ?? [];
   } catch (e: any) {
+    
     return (
       <html>
         <body className="flex sm:h-screen w-screen overflow-auto">
