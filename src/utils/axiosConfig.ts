@@ -30,12 +30,7 @@ instance.interceptors.response.use(
     const { status, data } = error.response;
 
     // Check for expired or missing access token
-    if (
-      status === 401 &&
-      (data?.message === "ACCESS_TOKEN_EXPIRED" ||
-        data?.message === "ACCESS_TOKEN_MISSING") &&
-      !originalRequest._retry
-    ) {
+    if (status === 403 && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
         // Call refresh endpoint
