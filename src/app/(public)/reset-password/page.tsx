@@ -1,4 +1,4 @@
-import Error from "@/app/components/Error";
+import Error from "@/components/Error";
 import { instance } from "@/utils/axiosConfig";
 import React from "react";
 import ResetPassword from "./_ui/ResetPassword";

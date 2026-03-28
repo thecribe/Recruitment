@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 import { instance } from "@/utils/axiosConfig";
-import Error from "@/app/components/Error";
-import RedirectTimer from "@/app/components/RedirectTimer";
+import Error from "@/components/Error";
+import RedirectTimer from "@/components/RedirectTimer";
 
 export default function VerifyEmailPage({ token }: { token: string }) {
   //   const searchParams = useSearchParams();

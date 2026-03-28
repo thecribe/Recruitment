@@ -1,7 +1,5 @@
-export const dynamic = "force-dynamic";
-import Error from "@/app/components/Error";
-import RedirectTimer from "@/app/components/RedirectTimer";
-import Authentication from "./Authetication";
+import Authentication from "@/components/Authetication";
+import Error from "@/components/Error";
 
 const page = async ({
   searchParams,

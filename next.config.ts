@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  productionBrowserSourceMaps: false,
   experimental: {
     serverActions: {
       bodySizeLimit: "50mb",
@@ -35,7 +36,6 @@ const nextConfig: NextConfig = {
       // },
     ],
   },
-
 };
 
 export default nextConfig;

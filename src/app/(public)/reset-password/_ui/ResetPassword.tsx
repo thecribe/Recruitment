@@ -1,5 +1,5 @@
 "use client";
-import FormTitle from "@/app/components/Forms/FormTitle";
+import FormTitle from "@/components/Forms/FormTitle";
 import { instance } from "@/utils/axiosConfig";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";

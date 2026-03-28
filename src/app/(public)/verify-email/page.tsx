@@ -1,4 +1,3 @@
-export const dynamic = "force-dynamic";
 import VerifyEmailPage from "./_ui/VerifyPage";
 
 const page = async ({
