@@ -1,5 +1,4 @@
-import DepartmentCard from "@/components/DepartmentCard";
-import StaffCountChart from "@/components/StaffCountChart";
+"use client";
 import { AuthContext } from "@/Context/AuthContext";
 import { instance } from "@/utils/axiosConfig";
 import React, { useEffect, useMemo, useState } from "react";
