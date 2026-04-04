@@ -116,8 +116,9 @@ const LoginForm = () => {
             src="/ariselogo.png"
             alt="logo"
             width={150}
-            height={150}
-            className="w-2/3 "
+            height={50}
+            className="w-2/3 h-full"
+            unoptimized
           />
         </div>
         <h2 className="text-xl text-blue-900 font-semibold text-center">

@@ -6,6 +6,7 @@ import Logo from "@/components/Logo";
 import Nav from "@/components/Nav";
 import DashboardHeader from "@/components/DashboardHeader";
 import Protected from "../../Context/Protected";
+import UserHeaderBox from "@/components/UserHeaderBox";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,12 +20,13 @@ export default async function RootLayout({
 }>) {
   return (
     <Protected>
-      <section className="flex sm:h-screen w-screen overflow-x-auto">
-        <div className="hidden  sm:block  h-full overflow-y-auto p-4">
+      <section className="bg-gray-50 flex h-screen w-screen">
+        <div className="hidden   w-72  h-full overflow-y-auto  bg-white border-r border-gray-300 shadow-sm sm:flex flex-col">
           {/* LOGO  */}
           <Logo />
           {/* MENU  */}
           <Nav />
+          <UserHeaderBox />
         </div>
         <div className="flex-1 flex flex-col bg-gray-400/20 h-full  overflow-x-auto">
           <div className="">

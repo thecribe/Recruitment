@@ -8,7 +8,7 @@ import FormWrapper from "./Forms/FormWrapper";
 import { StaffProfileSchema } from "@/utils/ZodSchema";
 import z from "zod";
 
-import { fileToFormData } from "@/utils/extrafucntions";
+import { fileToFormData, formToFormData } from "@/utils/extrafucntions";
 import { ManagePasswordSchema } from "@/utils/ZodSchema";
 import LoadingState from "./LoadingState";
 
@@ -175,33 +175,24 @@ const UserProfile = ({
     input: z.infer<typeof StaffProfileSchema>,
     type?: string,
   ) => {
-    if (type === "file_delete") {
-      try {
-        const response = await instance.put(`/users/${userProfile.id}`, input);
+    const formData = formToFormData(input);
 
-        setReloader((prev: any) => !prev);
-        setNotification({
-          message: "File deleted successfully",
-          type: "success",
-        });
-      } catch (error: any) {
-        setNotification({
-          message: error.response.data.message,
-          type: "error",
-        });
-      }
-
-      return null;
+    try {
+      const response = await instance.put(`/users/${userProfile.id}`, formData);
+      setNotification({
+        message:
+          type === "file_delete"
+            ? "File deleted successfully"
+            : response.data.message,
+        type: "success",
+      });
+    } catch (error: any) {
+      setNotification({ message: error.response.data.message, type: "error" });
     }
 
-    // try {
-    //   const body = fileToFormData(input, userProfile);
-    //   const response = await editUserProfile(body, userProfile.id);
-    //   setNotification({ message: response.message, type: "success" });
-    // } catch (error: any) {
-    //   setNotification({ message: error.response.data.message, type: "error" });
-    // }
+    return null;
   };
+
   const StaffProfileFormData = [
     {
       type: "text",

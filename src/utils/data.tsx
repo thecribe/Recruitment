@@ -3,6 +3,7 @@ import { FaSearch, FaUser } from "react-icons/fa";
 import { MdPeopleAlt } from "react-icons/md";
 import { FaWpforms } from "react-icons/fa6";
 import { IoAnalyticsSharp } from "react-icons/io5";
+import { FaHome } from "react-icons/fa";
 
 import { IoSettingsOutline } from "react-icons/io5";
 
@@ -18,7 +19,7 @@ export const MENULIST = {
     {
       name: "Dashboard",
       link: "/dashboard",
-      icon: <MdOutlineSpaceDashboard />,
+      icon: <FaHome />,
       access: [
         "applicant",
         "staff",
@@ -43,50 +44,26 @@ export const MENULIST = {
       name: "Recruitment",
       link: "/dashboard/recruitment",
       icon: <FaSearch />,
-      access: [
-        "applicant",
-        "staff",
-        "recruitment_manager",
-        "administrator",
-        "super_administrator",
-      ],
+      access: ["recruitment_manager", "administrator", "super_administrator"],
     },
     {
       name: "Compliance",
       link: "/dashboard/compliance",
       icon: <IoAnalyticsSharp />,
-      access: [
-        "applicant",
-        "staff",
-        "recruitment_manager",
-        "administrator",
-        "super_administrator",
-      ],
+      access: ["recruitment_manager", "administrator", "super_administrator"],
     },
     {
       name: "Staff Manager",
       link: "/dashboard/staff-manager",
       icon: <MdPeopleAlt />,
-      access: [
-        "applicant",
-        "staff",
-        "recruitment_manager",
-        "administrator",
-        "super_administrator",
-      ],
+      access: ["recruitment_manager", "administrator", "super_administrator"],
     },
 
     {
       name: "General Settings",
       link: "/dashboard/settings?page=general-settings",
       icon: <IoSettingsOutline />,
-      access: [
-        "applicant",
-        "staff",
-        "recruitment_manager",
-        "administrator",
-        "super_administrator",
-      ],
+      access: ["administrator", "super_administrator"],
     },
   ],
 };

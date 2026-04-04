@@ -8,7 +8,7 @@ const Nav = () => {
   const { user } = React.useContext(AuthContext);
 
   return (
-    <div className="w-full mt-10 flex flex-col gap-2 px-2 ">
+    <div className="w-full flex-1 p-4 text-gray-700 ">
       <div className="flex flex-col gap-2">
         {MENULIST.title.map((item, index) => {
           return (
@@ -16,16 +16,10 @@ const Nav = () => {
               <Link
                 key={index}
                 href={item.link}
-                className="w-full  rounded-md hover:bg-gray-500/10 cursor-pointer hover:shadow-sm hover:shadow-black/10 active:scale-95 active:shadow-black/10 transition-all duration-300"
+                className="flex items-center gap-3 px-5 py-4 hover:bg-indigo-50 hover:text-indigo-700 rounded-2xl font-medium"
               >
-                <div className="flex items-center justify-center sm:justify-start gap-2  py-2">
-                  <span className="text-gray-500 text-lg sm:text-base">
-                    {item.icon}
-                  </span>
-                  <span className="text-gray-500 hidden sm:block text-xs ">
-                    {item.name}
-                  </span>
-                </div>
+                <span className="text-gray-600 font-bold">{item.icon}</span>
+                <span className="text-sm font-medium">{item.name}</span>
               </Link>
             )
           );

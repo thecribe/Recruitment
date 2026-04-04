@@ -1,7 +1,7 @@
 import TrainingWrapper from "@/components/Training/TrainingWrapper";
 import React, { Suspense } from "react";
 
-const ScreeningPage = async ({
+const TrainingPage = async ({
   params,
 }: {
   params: Promise<{ user_id: string }>;
@@ -15,4 +15,4 @@ const ScreeningPage = async ({
   );
 };
 
-export default ScreeningPage;
+export default TrainingPage;

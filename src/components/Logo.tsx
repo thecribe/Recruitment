@@ -18,15 +18,24 @@ const Logo = () => {
 
   return (
     defaultdata.site_data && (
-      <div className="w-full p-2 flex justify-start">
-        <Image
-          src={site_logo.img_url || site_logo}
-          alt={site_logo.name || "Arise logo"}
-          width={150}
-          height={56}
-          className="w-28 h-full"
-          unoptimized
-        />
+      <div className="p-6 border-b border-gray-300 ">
+        <div className="flex items-center gap-3">
+          <div className="relative w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold">
+            <Image
+              src={site_logo.img_url || site_logo}
+              alt={site_logo.name || "Arise logo"}
+              fill={true}
+              className="absolute object-cover rounded-xl"
+              unoptimized
+            />
+          </div>
+          <div>
+            <h1 className="font-semibold text-xl text-gray-800">
+              Arise Nursing
+            </h1>
+            <p className="text-xs text-gray-500">Application Portal</p>
+          </div>
+        </div>
       </div>
     )
   );
