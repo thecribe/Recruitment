@@ -21,7 +21,7 @@ const NavigationUser = () => {
           link: `/dashboard/application/${user.id}/training`,
         },
       ]}
-      className="border-none py-4 rounded-md bg-white"
+      className="flex justify-center mb-8"
     />
   );
 };

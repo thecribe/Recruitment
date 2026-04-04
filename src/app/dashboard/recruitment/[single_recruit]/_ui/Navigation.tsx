@@ -17,22 +17,24 @@ const Navigation = ({
 
   useEffect(() => {
     setLoader(true);
-    const currentLink = pathname.split("/")[3];
+    const currentLink = pathname.split("/")[4];
     setActiveLink(currentLink);
     setLoader(false);
   }, [pathname]);
+  console.log(activeLink, pathname);
+  // border-t border-gray-300 mt-2 py-2
   return (
-    <div className={`border-t border-gray-300 mt-2 py-2 ${className}`}>
-      <div className="w-full bg-white rounded-md  divide-x flex items-center justify-center">
+    <div className={`${className}`}>
+      <div className="inline-flex bg-white rounded-2xl shadow-sm border border-gray-100 p-1">
         {!loader &&
           navLinks.map((item, index) => (
             <Link
               key={index}
               href={item.link}
-              className={`flex flex-col gap-2 w-fit justify-center items-center  text-xs font-semibold cursor-pointer py-1 px-5 hover:text-blue-600 transition-all duration-300 ${
+              className={`px-8 py-3 rounded-xl font-medium  transition-all duration-300 ${
                 activeLink === item.menu.toLowerCase()
-                  ? "text-blue-500 underline underline-offset-6"
-                  : "text-gray-500"
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "text-gray-600 hover:bg-gray-100"
               }`}
               onClick={() => setActiveLink(item.menu.toLowerCase())}
             >

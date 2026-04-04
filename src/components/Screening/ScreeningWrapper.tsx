@@ -201,11 +201,11 @@ const ScreeningWrapper = ({ id, type }: { id: string; type?: string }) => {
     const getData = async () => {
       try {
         const response = await instance.get(`/completion-rate/forms/${id}`);
-      setCompletionRate(response.data.completionRates);
+
+        setCompletionRate(response.data.completionRates);
       } catch (error) {
-        setCompletionRate(null)
+        setCompletionRate(null);
       }
-      
     };
 
     getData();

@@ -35,30 +35,6 @@ export default async function RootLayout({
   return (
     <div className="flex flex-col flex-1 gap-3 p-3 w-full h-full ">
       <div className="">
-        <Suspense
-          fallback={
-            <LoadingState className="w-full flex justify-center items-center " />
-          }
-        >
-          <div className="bg-white w-full p-3 rounded-md">
-            <ModalWrapper>
-              <ModalTrigger>
-                <div className="flex gap-3 items-center w-fit cursor-pointer border border-gray-500 px-3 py-1 rounded-md hover:bg-gray-500/20 active:scale-95 transition-all duration-200 ">
-                  <BiBook className="text-2xl" />
-                  <p className="text-xs ">Print Page</p>
-                </div>
-              </ModalTrigger>
-              <ModalContent
-                className="w-[80%] max-h-[90%] overflow-y-auto"
-                title={<FormTitle label="Staff Profile Print Preview" />}
-              >
-                <div className="w-full h-full overflow-y-auto">
-                  {/* <ProfilePrint id={id} /> */}
-                </div>
-              </ModalContent>
-            </ModalWrapper>
-          </div>
-        </Suspense>
         <NavigationUser />
       </div>
       <div className=" flex-1 w-full flex flex-col gap-3 md:overflow-y-auto ">
