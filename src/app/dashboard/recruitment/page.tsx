@@ -5,8 +5,8 @@ import React, { Suspense } from "react";
 
 const Recruitment = async () => {
   return (
-    <div className="flex flex-col gap-3 p-3">
-      <div className="bg-white p-3 rounded-md">
+    <div className="h-full flex flex-col gap-3 p-8">
+      <div className="bg-white p-6 rounded-3xl">
         <Suspense
           fallback={
             <LoadingState className="w-full flex justify-center items-center " />
@@ -15,7 +15,7 @@ const Recruitment = async () => {
           <RecruitmentFilter />
         </Suspense>
       </div>
-      <div className="bg-white p-3 rounded-md flex-1">
+      <div className="bg-white p-6 rounded-3xl flex-1">
         <Suspense
           fallback={
             <LoadingState className="w-full flex justify-center items-center " />

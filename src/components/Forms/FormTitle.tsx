@@ -8,7 +8,9 @@ const FormTitle = ({
   className?: string;
 }) => {
   return (
-    <h2 className={`font-semibold ${className ? className : "text-base"}`}>
+    <h2
+      className={`font-semibold ${className ? className : "mb-8"} text-2xl font-semibold text-gray-900 `}
+    >
       {label}
     </h2>
   );

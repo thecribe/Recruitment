@@ -1,14 +1,16 @@
 "use client";
-import Image from "next/image";
+
 import React, { useEffect, useMemo, useState } from "react";
-import { BiLogOut } from "react-icons/bi";
-import { CiSettings } from "react-icons/ci";
+
 import { FaSearch, FaUser } from "react-icons/fa";
 import { AuthContext } from "../Context/AuthContext";
 import { instance } from "@/utils/axiosConfig";
 import Notification from "./Notification";
 import { useRouter } from "next/navigation";
 import { set } from "zod";
+import ModalWrapper, { ModalContent, ModalTrigger } from "./ModalWrapper";
+import { PDFViewer } from "@react-pdf/renderer";
+import DownloadUserProfile from "./DownloadUserProfile";
 
 const DashboardHeader = () => {
   const { user, logout } = React.useContext(AuthContext);
@@ -20,7 +22,7 @@ const DashboardHeader = () => {
   } | null>(null);
 
   return (
-    <header className="w-full bg-white border-b border-gray-300 px-8 py-5 flex items-center justify-between sticky top-0 z-10">
+    <header className="w-full bg-white border-b border-gray-300 px-8 py-5 flex items-center justify-between">
       {notification && (
         <Notification
           message={notification?.message}
@@ -28,6 +30,7 @@ const DashboardHeader = () => {
           onClose={() => setNotification(null)}
         />
       )}
+
       {["applicant", "staff"].includes(user?.role.slug) && (
         <ApplicantDashboardHeader />
       )}
@@ -89,7 +92,7 @@ const ApplicantDashboardHeader = () => {
     getData();
   }, [user]);
   return (
-    <>
+    <div className="w-full flex justify-between items-center">
       <div className="flex items-center gap-6">
         <h2 className="text-2xl font-semibold text-gray-800">
           Application Progress
@@ -100,12 +103,19 @@ const ApplicantDashboardHeader = () => {
           {averageCompletionRate.toFixed(1)}% Complete
         </span>
       </div>
-      <div className="flex items-center gap-4">
-        <button className="flex items-center gap-2 px-5 py-3 bg-white border border-gray-300 rounded-2xl hover:bg-gray-50">
-          <i className="fas fa-print"></i>
-          <span>Print Page</span>
-        </button>
-      </div>
-    </>
+      <ModalWrapper>
+        <ModalTrigger>
+          <button className="flex items-center gap-2 px-5 py-3 bg-white border border-gray-300 rounded-2xl hover:bg-gray-50">
+            <i className="fas fa-print"></i>
+            <span>Print Page</span>
+          </button>
+        </ModalTrigger>
+        <ModalContent className="w-3/4">
+          <PDFViewer width="100%" height="800px">
+            <DownloadUserProfile />
+          </PDFViewer>
+        </ModalContent>
+      </ModalWrapper>
+    </div>
   );
 };

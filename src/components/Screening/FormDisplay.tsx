@@ -1,7 +1,7 @@
 "use client";
 
 import { AuthContext } from "@/Context/AuthContext";
-import { fileToFormData, formToFormData } from "@/utils/extrafucntions";
+import { formToFormData } from "@/utils/extrafucntions";
 
 import { useSearchParams } from "next/navigation";
 import React, { createContext, useContext, useEffect, useState } from "react";

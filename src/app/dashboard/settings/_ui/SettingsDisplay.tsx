@@ -27,21 +27,23 @@ const SettingsDisplay = () => {
 
   return (
     initialData && (
-      <div className="h-full flex flex-col gap-3">
+      <div className="w-full h-full flex flex-col gap-3">
         <div>
           <FormTitle label="Site Details" />
         </div>
         <div className="flex flex-1 p-5">
-          <div className="w-[12%] flex flex-col  bg-gray-300/50 py-5 rounded-md">
-            {["Site Information", "Logo"].map((eachMenu, index) => (
-              <p
-                key={index}
-                className="text-xs hover:bg-white px-5 py-2 cursor-pointer"
-                onClick={() => setDisplay(index + 1)}
-              >
-                {eachMenu}
-              </p>
-            ))}
+          <div className="w-[12%] p-4 text-gray-700 shadow-sm rounded-3xl ">
+            <div className=" flex flex-col gap-2">
+              {["Site Information", "Logo"].map((eachMenu, index) => (
+                <p
+                  key={index}
+                  className="flex items-center gap-3 px-5 py-4 hover:bg-indigo-50 hover:text-indigo-700 rounded-2xl font-medium cursor-pointer"
+                  onClick={() => setDisplay(index + 1)}
+                >
+                  {eachMenu}
+                </p>
+              ))}
+            </div>
           </div>
           <div className="flex-1 p-5">
             {display === 1 ? (

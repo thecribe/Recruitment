@@ -66,7 +66,7 @@ const TypeHolder = ({ type }: { type: string }) => {
   };
   const rendeRow = (eachRow: any, index?: number) => {
     return (
-      <tr key={eachRow.id} className="text-xs even:bg-gray-100">
+      <tr key={eachRow.id} className="text-sm even:bg-gray-100">
         <td className="p-3">{index !== undefined ? index + 1 : ""}</td>
         <td className="p-3">{eachRow.title}</td>
         <td className="p-3">{eachRow.slug}</td>
@@ -80,6 +80,7 @@ const TypeHolder = ({ type }: { type: string }) => {
                 className="w-80% md:w-[50%]"
                 title={
                   <FormTitle
+                    className="mb-0"
                     label={`Edit ${
                       type === "department"
                         ? "Department"
@@ -104,6 +105,7 @@ const TypeHolder = ({ type }: { type: string }) => {
                 className="w-80% md:w-[30%]"
                 title={
                   <FormTitle
+                    className="mb-0"
                     label={`Delete ${
                       type === "department"
                         ? "Departments"
@@ -115,14 +117,14 @@ const TypeHolder = ({ type }: { type: string }) => {
                 }
               >
                 <div className="flex items-center justify-center flex-col gap-5">
-                  <p className="text-xs ">Are you sure you want to delete</p>
+                  <p className="text-sm ">Are you sure you want to delete</p>
 
                   {loader ? (
                     <LoadingState className="w-1/4 flex justify-center items-center " />
                   ) : (
                     <button
                       onClick={() => deleteHandler(eachRow)}
-                      className="text-xs bg-red-500 text-white px-3 py-1 rounded-sm cursor-pointer active:scale-95 active:shadow-black/10 shadow-sm hover:shadow-black/30 hover:scale-105 transition-all duration-300"
+                      className="text-sm bg-red-500 text-white px-3 py-1 rounded-sm cursor-pointer active:scale-95 active:shadow-black/10 shadow-sm hover:shadow-black/30 hover:scale-105 transition-all duration-300"
                     >
                       Yes, delete
                     </button>
@@ -173,6 +175,7 @@ const TypeHolder = ({ type }: { type: string }) => {
       )}
       <div className="h-full flex flex-col gap-3 overflow-y-auto">
         <FormTitle
+          className="mb-0"
           label={`Manage ${
             type === "department"
               ? "Departments"
@@ -186,6 +189,7 @@ const TypeHolder = ({ type }: { type: string }) => {
         <div className="flex-1 flex gap-5 mt-5 overflow-y-auto">
           <div className="w-1/3">
             <FormTitle
+              className="mb-0"
               label={`Add New ${
                 type === "department"
                   ? "Departments"
@@ -213,7 +217,7 @@ const TypeHolder = ({ type }: { type: string }) => {
                 />
               </div>
             ) : (
-              <p className="text-center text-xs w-full">{`Please add a ${
+              <p className="text-center text-sm w-full">{`Please add a ${
                 type === "department"
                   ? "departments"
                   : type === "job-type"

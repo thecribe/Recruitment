@@ -1,15 +1,10 @@
 "use client";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import Link from "next/link";
 
-const Navigation = ({
-  navLinks,
-  className,
-}: {
-  className?: string;
-  navLinks: { menu: string; link: string }[];
-}) => {
+const Navigation = ({ navLinks }: { navLinks: any[] }) => {
+  const [navSelector, setNavSelector] = useState<string>("screening");
   const [activeLink, setActiveLink] = useState("screening");
   const [loader, setLoader] = useState(true);
 
@@ -21,28 +16,25 @@ const Navigation = ({
     setActiveLink(currentLink);
     setLoader(false);
   }, [pathname]);
-  console.log(activeLink, pathname);
-  // border-t border-gray-300 mt-2 py-2
   return (
-    <div className={`${className}`}>
-      <div className="inline-flex bg-white rounded-2xl shadow-sm border border-gray-100 p-1">
-        {!loader &&
-          navLinks.map((item, index) => (
-            <Link
-              key={index}
-              href={item.link}
-              className={`px-8 py-3 rounded-xl font-medium  transition-all duration-300 ${
-                activeLink === item.menu.toLowerCase()
-                  ? "bg-blue-600 text-white shadow-sm"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-              onClick={() => setActiveLink(item.menu.toLowerCase())}
-            >
-              {item.menu}
-            </Link>
-          ))}
+    <>
+      <div className="flex border-b border-gray-300">
+        {navLinks.map((tab, index) => (
+          <Link
+            key={index}
+            href={tab.link}
+            className={`px-8 py-4 border-b-4 ${
+              activeLink === tab.menu.toLowerCase()
+                ? "border-indigo-600 text-indigo-600"
+                : "border-transparent text-gray-500 hover:text-gray-700"
+            } font-medium`}
+            onClick={() => setActiveLink(tab.menu.toLowerCase())}
+          >
+            {tab.menu.charAt(0).toUpperCase() + tab.menu.slice(1)}
+          </Link>
+        ))}
       </div>
-    </div>
+    </>
   );
 };
 

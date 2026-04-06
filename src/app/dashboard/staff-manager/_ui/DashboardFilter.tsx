@@ -24,9 +24,9 @@ const DashboardFilter = () => {
     router.push(`${pathname}?${params.toString()}`);
   };
   return (
-    <div className="p-3 bg-white w-full rounded-md flex justify-end gap-3">
+    <div className=" w-full rounded-md flex justify-end gap-3">
       <div className="flex justify-center items-center gap-2">
-        <span className="text-xs font-semibold">Department:</span>
+        <span className="text-sm font-semibold">Department:</span>
         <select
           value={filterValue.department}
           onChange={(e) =>
@@ -35,7 +35,7 @@ const DashboardFilter = () => {
               department: e.target.value,
             }))
           }
-          className=" p-2 border border-gray-300 rounded-md text-xs"
+          className=" border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="all">All</option>
           {department &&
@@ -47,7 +47,7 @@ const DashboardFilter = () => {
         </select>
       </div>
       <div className="flex justify-center items-center gap-2">
-        <span className="text-xs font-semibold">Job type:</span>
+        <span className="text-sm font-semibold">Job type:</span>
         <select
           value={filterValue.job_type}
           onChange={(e) =>
@@ -56,7 +56,7 @@ const DashboardFilter = () => {
               job_type: e.target.value,
             }))
           }
-          className=" p-2 border border-gray-300 rounded-md text-xs"
+          className=" border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           {job_type?.map((eachType: any, index: number) => {
             return (
@@ -69,7 +69,7 @@ const DashboardFilter = () => {
       </div>
 
       <button
-        className="px-3 py-2 bg-blue-500 text-white rounded-md cursor-pointer hover:scale-105 shadow-sm hover:shadow-black/30 active:scale-95 active:shadow-black/10 transition-all duration-300 text-sm"
+        className="px-10 py-3.5 bg-blue-500 text-white rounded-md cursor-pointer hover:scale-105 shadow-sm hover:shadow-black/30 active:scale-95 active:shadow-black/10 transition-all duration-300 text-sm"
         onClick={handleFilter}
       >
         Apply

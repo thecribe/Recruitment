@@ -1,14 +1,5 @@
-import FormTitle from "@/components/Forms/FormTitle";
-import LoadingState from "@/components/LoadingState";
-import ModalWrapper, {
-  ModalContent,
-  ModalTrigger,
-} from "@/components/ModalWrapper";
-
 import type { Metadata } from "next";
 
-import { Suspense } from "react";
-import { BiBook } from "react-icons/bi";
 import NavigationUser from "./_ui/NavigationUser";
 
 export const metadata: Metadata = {
@@ -33,8 +24,8 @@ export default async function RootLayout({
   // }
 
   return (
-    <div className="flex flex-col flex-1 gap-3 p-3 w-full h-full ">
-      <div className="">
+    <div className="flex flex-col flex-1 p-3 w-full h-full ">
+      <div className="w-full">
         <NavigationUser />
       </div>
       <div className=" flex-1 w-full flex flex-col gap-3 md:overflow-y-auto ">

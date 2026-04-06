@@ -65,7 +65,7 @@ const EducationModal = ({
         </div>
       ) : (
         <button
-          className="text-xs w-fit bg-green-500/50 px-3 py-2 rounded-md cursor-pointer hover:bg-green-500/70 hover:scale-105 shadow-sm hover:shadow-black/30 active:shadow-black/10 active:scale-95 transition-all duration-300"
+          className="text-sm w-fit bg-green-500/50 px-10 py-3.5 rounded-md cursor-pointer hover:bg-green-500/70 hover:scale-105 shadow-sm hover:shadow-black/30 active:shadow-black/10 active:scale-95 transition-all duration-300"
           onClick={() => setIsOpen(true)}
         >
           {buttonLabel}

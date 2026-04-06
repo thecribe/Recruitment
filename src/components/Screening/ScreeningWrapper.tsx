@@ -212,42 +212,44 @@ const ScreeningWrapper = ({ id, type }: { id: string; type?: string }) => {
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-row gap-3 w-full h-full">
-      <div className="w-full md:w-1/5 h-125 overflow-y-auto bg-white rounded-md py-4 pl-4 flex flex-col gap-3 md:h-full  ">
-        {formNav.map((parentMenu, index) => {
-          return (
-            <div key={index} className="flex gap-4 flex-col w-full  ">
-              <h2 className="uppercase font-bold text-gray-800/70 truncate text-xs">
-                {parentMenu.title}
-              </h2>
-              <div className=" flex flex-col text-xs ">
-                {parentMenu.menu.map((childrenMenu, index) => (
-                  <Link
-                    href={`${pathname}?query=${childrenMenu.query}`}
-                    key={index}
-                    className="py-2 rounded-md hover:bg-gray-500/30 cursor-pointer hover:shadow-sm hover:shadow-black/10 active:scale-95 active:shadow-black/10 transition-all duration-300 text-xs px-4 text-gray-500 truncate lg:overflow-visible lg:whitespace-normal "
-                  >
-                    {childrenMenu.title}
-                    <span className="hidden xl:block float-right text-xs text-gray-400">
-                      {completionRate
-                        ? completionRate[childrenMenu.query] + "%"
-                        : "0%"}
-                    </span>
-                  </Link>
-                ))}
+    <div className="w-full h-full flex justify-center items-center p-8 overflow-y-auto">
+      <div className="flex flex-col  md:flex-row gap-3 w-full h-full overflow-y-auto">
+        <div className="w-full md:w-1/5 overflow-y-auto bg-white rounded-3xl p-6 flex flex-col gap-10 md:h-full shadow-sm border border-gray-100">
+          {formNav.map((parentMenu, index) => {
+            return (
+              <div key={index} className="flex gap-4 flex-col w-full  ">
+                <h2 className="uppercase font-medium text-gray-800/70 truncate text-lg">
+                  {parentMenu.title}
+                </h2>
+                <div className=" flex flex-col text-xs ">
+                  {parentMenu.menu.map((childrenMenu, index) => (
+                    <Link
+                      href={`${pathname}?query=${childrenMenu.query}`}
+                      key={index}
+                      className="py-2 rounded-md hover:bg-gray-500/30 cursor-pointer hover:shadow-sm hover:shadow-black/10 active:scale-95 active:shadow-black/10 transition-all duration-300 text-sm px-4 text-gray-500 truncate lg:overflow-visible lg:whitespace-normal "
+                    >
+                      {childrenMenu.title}
+                      <span className="hidden xl:block float-right text-sm font-medium text-gray-400">
+                        {completionRate
+                          ? completionRate[childrenMenu.query] + "%"
+                          : "0%"}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-      <div className="md:flex-1 bg-white rounded-md p-4 md:overflow-y-auto">
-        <Suspense
-          fallback={
-            <LoadingState className="w-full flex justify-center items-center " />
-          }
-        >
-          <FormDisplay formNav={formNav} id={id} />
-        </Suspense>
+            );
+          })}
+        </div>
+        <div className="md:flex-1 bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:overflow-y-auto">
+          <Suspense
+            fallback={
+              <LoadingState className="w-full flex justify-center items-center " />
+            }
+          >
+            <FormDisplay formNav={formNav} id={id} />
+          </Suspense>
+        </div>
       </div>
     </div>
   );

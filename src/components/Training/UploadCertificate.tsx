@@ -79,13 +79,13 @@ const UploadCertificate = () => {
   return (
     <ModalWrapper>
       <ModalTrigger>
-        <button className="text-xs w-fit bg-green-500/50 px-3 py-2 rounded-md cursor-pointer hover:bg-green-500/70 hover:scale-101 shadow-sm hover:shadow-black/30 active:shadow-black/10 active:scale-98 transition-all duration-300 flex items-center gap-1">
-          <p className="text-xs">Upload certificate</p>
+        <button className="text-sm w-fit bg-green-500/50 px-10 py-3.5 rounded-2xl font-medium cursor-pointer hover:bg-green-500/70 hover:scale-101 shadow-sm hover:shadow-black/30 active:shadow-black/10 active:scale-98 transition-all duration-300 flex items-center gap-1">
+          <p className="text-sm">Upload certificate</p>
         </button>
       </ModalTrigger>
       <ModalContent
         className="w-[80%] lg:w-[60%]"
-        title={<FormTitle label="Upload Certificate" />}
+        title={<FormTitle className="mb-0" label="Upload Certificate" />}
       >
         <div>
           {loadingState && (

@@ -49,7 +49,7 @@ export const ModalContent = ({
   return (
     <>
       {isOpen && (
-        <div className="fixed left-0 top-0 w-screen h-screen bg-black/50 flex justify-center items-center z-30">
+        <div className="fixed left-0 top-0 w-screen h-screen bg-black/50 flex justify-center items-center z-50">
           <div
             className={`bg-white rounded-md shadow-md p-5 ${className} flex flex-col gap-5 overflow-y-auto`}
           >

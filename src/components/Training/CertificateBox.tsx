@@ -122,7 +122,7 @@ const CertificateBox = ({
   return (
     <div className="p-4 rounded-md shadow-md shadow-black/20 flex flex-col gap-4">
       <div className="flex justify-between items-center">
-        <h3 className="text-sm text-gray-600 font-semibold">
+        <h3 className="text-xl text-gray-600 font-semibold">
           {defaultApplicantData
             ? defaultApplicantData?.name
             : mandatoryCertificateData?.name}
@@ -138,7 +138,7 @@ const CertificateBox = ({
         )}
       </div>
 
-      <div className="flex text-xs justify-between">
+      <div className="flex text-sm justify-between">
         <p>Date of Issue:</p>
         <span>
           {defaultApplicantData?.issue_date
@@ -147,7 +147,7 @@ const CertificateBox = ({
         </span>
       </div>
 
-      <div className="flex text-xs justify-between">
+      <div className="flex text-sm justify-between">
         <p>Expiry Date:</p>
         <span>
           {defaultApplicantData?.expiry_date
@@ -165,7 +165,7 @@ const CertificateBox = ({
             onClick={deleteCertificateHandler}
           >
             <FiDelete className="" />
-            <p className="text-xs">Delete</p>
+            <p className="text-sm">Delete</p>
           </button>
         )}
       </div>
@@ -181,9 +181,9 @@ const DocumentViewer = ({ filepath }: { filepath: any }) => {
   return (
     <ModalWrapper>
       <ModalTrigger>
-        <button className="flex items-center gap-1 bg-gray-300 w-fit px-3 py-1 rounded-sm cursor-pointer">
-          <FaEye className="" />
-          <p className="text-xs">View</p>
+        <button className="flex items-center gap-1 bg-gray-300 w-fit px-3 py-2 rounded-sm cursor-pointer">
+          <FaEye className="text-sm font-semibold" />
+          <p className="text-sm">View</p>
         </button>
       </ModalTrigger>
       <ModalContent className="h-[80%] w-[80%] ">
@@ -202,7 +202,7 @@ const DocumentViewer = ({ filepath }: { filepath: any }) => {
               />
             </div>
           ) : (
-            <div className="w-full h-[90%]">
+            <div className="w-full h-[90%] relative">
               <Image
                 src={
                   filepath.img_url.includes("localhost:3000")
@@ -210,15 +210,14 @@ const DocumentViewer = ({ filepath }: { filepath: any }) => {
                     : filepath.img_url
                 }
                 alt={filepath.name}
-                width={1200}
-                height={1000}
-                className="w-full h-full object-contain "
+                fill={true}
+                className="w-full h-full absolute object-contain "
                 unoptimized
               />
             </div>
           )
         ) : (
-          <p>no image</p>
+          <p className="text-sm">No image</p>
         )}
       </ModalContent>
     </ModalWrapper>

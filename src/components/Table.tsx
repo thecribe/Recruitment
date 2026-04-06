@@ -18,7 +18,7 @@ const Table = ({
               key={eachCol.accessor}
               className={`${eachCol.className}  ${
                 eachCol.accessor !== "actions" && "text-left"
-              } text-xs text-black font-bold py-5  bg-gray-200 px-2`}
+              } text-sm text-black font-bold py-5  bg-gray-200 px-2`}
             >
               {eachCol.header}
             </th>

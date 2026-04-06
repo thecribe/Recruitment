@@ -168,7 +168,7 @@ const ReferenceWrapper = ({
           {initialData.map((entry: any, index: number) => (
             <div
               key={index}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-4 divide-y-2 divide-gray-300 bg-blue-500/10 rounded-md p-5 text-xs"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-4 divide-y-2 divide-gray-300 bg-blue-500/10 rounded-md p-5 text-sm"
             >
               <div className="flex flex-col gap-2">
                 <h3 className="font-semibold">Institute/Company Name</h3>

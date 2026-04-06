@@ -33,13 +33,13 @@ const RecruitmentFilter = ({}) => {
       <div className="flex  gap-2 border-b-2 pb-2 xl:pb-0 border-gray-300 xl:border-none ">
         <ModalWrapper>
           <ModalTrigger>
-            <button className="px-3 py-2 bg-blue-500 text-white rounded-md cursor-pointer hover:scale-105 shadow-sm hover:shadow-black/30 active:scale-95 active:shadow-black/10 transition-all duration-300 text-xs">
+            <button className="px-10 py-3.5 bg-blue-500 text-white rounded-2xl cursor-pointer hover:scale-105 shadow-sm hover:shadow-black/30 active:scale-95 active:shadow-black/10 transition-all duration-300 text-sm">
               Add new candidate
             </button>
           </ModalTrigger>
           <ModalContent
             className="w-[90%] md:w-[60%]"
-            title={<FormTitle label="Add New Applicant" />}
+            title={<FormTitle className="mb-0" label="Add New Applicant" />}
           >
             <SignUpForm />
           </ModalContent>
@@ -48,7 +48,7 @@ const RecruitmentFilter = ({}) => {
       </div>
       <div className="flex flex-col xl:flex-row items-start xl:items-center justify-center gap-5">
         <div className="flex justify-center items-center gap-2">
-          <span className="text-xs font-semibold">Department:</span>
+          <span className="text-sm font-semibold">Department:</span>
           <select
             value={filterValue.department}
             onChange={(e) =>
@@ -57,7 +57,7 @@ const RecruitmentFilter = ({}) => {
                 department: e.target.value,
               }))
             }
-            className=" p-2 border border-gray-300 rounded-md text-xs"
+            className="border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="all">All</option>
             {department &&
@@ -69,7 +69,7 @@ const RecruitmentFilter = ({}) => {
           </select>
         </div>
         <div className="flex justify-center items-center gap-2">
-          <span className="text-xs font-semibold">Job Type:</span>
+          <span className="text-sm font-semibold">Job Type:</span>
           <select
             value={filterValue.job_type}
             onChange={(e) =>
@@ -78,7 +78,7 @@ const RecruitmentFilter = ({}) => {
                 job_type: e.target.value,
               }))
             }
-            className=" p-2 border border-gray-300 rounded-md text-xs"
+            className=" border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="all">All</option>
             {job_type?.map((eachType: any, index: number) => {
@@ -92,7 +92,7 @@ const RecruitmentFilter = ({}) => {
         </div>
 
         <button
-          className="px-3 py-2 bg-blue-500 text-white rounded-md cursor-pointer hover:scale-105 shadow-sm hover:shadow-black/30 active:scale-95 active:shadow-black/10 transition-all duration-300 text-sm"
+          className="px-10 py-3.5 bg-blue-500 text-white rounded-2xl cursor-pointer hover:scale-105 shadow-sm hover:shadow-black/30 active:scale-95 active:shadow-black/10 transition-all duration-300 text-sm"
           onClick={handleFilter}
         >
           Apply

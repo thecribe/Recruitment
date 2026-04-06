@@ -11,6 +11,8 @@ import { IoSettingsOutline } from "react-icons/io5";
 import Navigation from "../app/dashboard/recruitment/[single_recruit]/_ui/Navigation";
 import { instance } from "@/utils/axiosConfig";
 import { useEffect, useMemo, useState } from "react";
+import { PDFViewer } from "@react-pdf/renderer";
+import DownloadUserProfile from "./DownloadUserProfile";
 
 const RecruitmentProfile = ({ id }: { id: string }) => {
   const [userProfile, setUserProfile] = useState<any | null>(null);
@@ -79,7 +81,7 @@ const RecruitmentProfile = ({ id }: { id: string }) => {
   })();
   return (
     userProfile && (
-      <div className="rounded-md bg-white p-2">
+      <div className="rounded-3xl bg-white p-6">
         <div className=" flex flex-col md:flex-row gap-3 items-center ">
           <div className=" flex items-center justify-center relative bg-gray-400 rounded-md">
             <Image
@@ -133,16 +135,29 @@ const RecruitmentProfile = ({ id }: { id: string }) => {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col gap-10 cursor-pointer">
+              <div className="flex  gap-5 cursor-pointer">
                 <ModalWrapper>
                   <ModalTrigger>
-                    <button className="bg-green-500 rounded-md px-4 py-2 hover:bg-green-600 transition-all duration-300 hidden xl:flex text-xs items-center gap-2 cursor-pointer">
+                    <button className="flex items-center gap-2 px-5 py-3 bg-white border border-gray-300 rounded-2xl hover:bg-gray-50">
+                      <i className="fas fa-print"></i>
+                      <span className="text-sm">Print Profile</span>
+                    </button>
+                  </ModalTrigger>
+                  <ModalContent className="w-3/4">
+                    <PDFViewer width="100%" height="800px">
+                      <DownloadUserProfile />
+                    </PDFViewer>
+                  </ModalContent>
+                </ModalWrapper>
+                <ModalWrapper>
+                  <ModalTrigger>
+                    <button className="bg-green-500 rounded-md px-10 py-3.5 hover:bg-green-600 transition-all duration-300 hidden xl:flex text-sm items-center gap-2 cursor-pointer">
                       <IoSettingsOutline /> <span>User Settings</span>
                     </button>
                   </ModalTrigger>
                   <ModalContent
                     className="w-[80%] h-[90%]"
-                    title={<FormTitle label="Manage User" />}
+                    title={<FormTitle className="mb-0" label="Manage User" />}
                   >
                     <ManageProfile id={userProfile.id} />
                   </ModalContent>
@@ -171,22 +186,6 @@ const RecruitmentProfile = ({ id }: { id: string }) => {
             </div>
           </div>
         </div>
-        <Navigation
-          navLinks={[
-            {
-              menu: "Screening",
-              link: `/dashboard/recruitment/${userProfile.id}/screening?query=personal_info`,
-            },
-            {
-              menu: "Reference",
-              link: `/dashboard/recruitment/${userProfile.id}/reference`,
-            },
-            {
-              menu: "Training",
-              link: `/dashboard/recruitment/${userProfile.id}/training`,
-            },
-          ]}
-        />
       </div>
     )
   );

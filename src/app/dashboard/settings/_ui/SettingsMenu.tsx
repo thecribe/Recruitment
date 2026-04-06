@@ -10,7 +10,7 @@ const SettingsMenu = () => {
 
   useEffect(() => {
     if (!page) {
-      router.push(`/settings?page=general-settings`);
+      router.push(`/dashboard/settings?page=general-settings`);
     }
   }, [page]);
   const menu = [
@@ -21,21 +21,22 @@ const SettingsMenu = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-5">
-      <FormTitle label="Generel Settings" />
-      <div className="flex divide-x-2 divide-gray-200 ">
-        {menu.map((eachMenu, index) => (
-          <p
-            key={eachMenu.slug}
-            className={`text-xs ${
-              page === eachMenu.slug && "underline underline-offset-4 "
-            } text-blue-800 cursor-pointer transition-all duration-300 hover:underline underline-offset-4 hover:text-blue-900 px-3 py-1`}
-            onClick={() => router.push(`/settings?page=${eachMenu.slug}`)}
-          >
-            {eachMenu.title}
-          </p>
-        ))}
-      </div>
+    <div className="flex border-b border-gray-300">
+      {menu.map((eachMenu, index) => (
+        <p
+          key={eachMenu.slug}
+          className={`font-medium px-8 py-4 border-b-4 cursor-pointer ${
+            page === eachMenu.slug
+              ? "border-indigo-600 text-indigo-600"
+              : "border-transparent text-gray-500 hover:text-gray-700"
+          }`}
+          onClick={() =>
+            router.push(`/dashboard/settings?page=${eachMenu.slug}`)
+          }
+        >
+          {eachMenu.title}
+        </p>
+      ))}
     </div>
   );
 };

@@ -85,9 +85,9 @@ const CerticateForm = ({
   return (
     <ModalWrapper>
       <ModalTrigger>
-        <button className="text-xs w-fit bg-green-500/50 px-3 py-2 rounded-md cursor-pointer hover:bg-green-500/70 hover:scale-105 shadow-sm hover:shadow-black/30 active:shadow-black/10 active:scale-95 transition-all duration-300 flex items-center gap-1">
+        <button className="text-sm w-fit bg-green-500/50 px-3 py-2 rounded-md cursor-pointer hover:bg-green-500/70 hover:scale-105 shadow-sm hover:shadow-black/30 active:shadow-black/10 active:scale-95 transition-all duration-300 flex items-center gap-1">
           <FaUpload className="" />
-          <p className="text-xs">Upload</p>
+          <p className="text-sm">Upload</p>
         </button>
       </ModalTrigger>
       <ModalContent

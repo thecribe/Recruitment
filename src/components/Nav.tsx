@@ -16,7 +16,7 @@ const Nav = () => {
               <Link
                 key={index}
                 href={item.link}
-                className="flex items-center gap-3 px-5 py-4 hover:bg-indigo-50 hover:text-indigo-700 rounded-2xl font-medium"
+                className="flex items-center gap-3 px-5 py-4 hover:bg-indigo-50 hover:text-indigo-700 rounded-2xl font-medium cursor-pointer"
               >
                 <span className="text-gray-600 font-bold">{item.icon}</span>
                 <span className="text-sm font-medium">{item.name}</span>

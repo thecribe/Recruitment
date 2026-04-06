@@ -6,6 +6,7 @@ import { BiUpload } from "react-icons/bi";
 import FileNameBox from "../FileNameBox";
 import Button from "../Button";
 import { AuthContext } from "@/Context/AuthContext";
+import { FaSave } from "react-icons/fa";
 
 type Data = {
   label: string;
@@ -57,12 +58,15 @@ const FormWrapper = ({
           })}
         </div>
         {!auditCheck && (
-          <button
-            onClick={onSubmit}
-            className="text-xs w-fit bg-blue-500/50 px-3 py-1 rounded-md cursor-pointer hover:bg-blue-500/70 hover:scale-105 shadow-xs hover:shadow-black/30 active:shadow-black/10 active:scale-95 transition-all duration-300"
-          >
-            Save
-          </button>
+          <div className="mt-10 flex justify-start">
+            <button
+              onClick={onSubmit}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-3.5 rounded-2xl font-medium flex items-center gap-2 transition"
+            >
+              <FaSave />
+              Save
+            </button>
+          </div>
         )}
       </div>
       {auditCheck && ["applicant", "staff"].includes(user.role) && (
@@ -158,7 +162,7 @@ const FormInput = ({
           <div className="flex flex-col  gap-5">
             <div className="w-fit h-fit flex flex-col gap-2  border rounded-md">
               <label
-                className="text-xs text-gray-500 font-semibold flex items-center p-3  gap-3 cursor-pointer"
+                className="text-sm text-gray-500 font-semibold flex items-center p-3  gap-3 cursor-pointer"
                 htmlFor={accessor}
               >
                 <BiUpload />
@@ -188,7 +192,7 @@ const FormInput = ({
             <div className="flex flex-col gap-2 flex-wrap">
               {preview?.[accessor]?.pdfs.length > 0 &&
                 preview?.[accessor]?.pdfs.map((eachpdfs, index) => (
-                  <p key={index} className="italic text-xs text-blue-500">
+                  <p key={index} className="italic text-sm text-blue-500">
                     {eachpdfs}
                   </p>
                 ))}
@@ -196,7 +200,7 @@ const FormInput = ({
           </div>
 
           {errors?.[accessor]?.message && (
-            <p className="text-red-400 text-xs">
+            <p className="text-red-400 text-sm">
               {errors?.[accessor]?.message.toString()}
             </p>
           )}
@@ -215,9 +219,11 @@ const FormInput = ({
         </div>
       ) : type === "select" ? (
         <div className="w-full flex flex-col gap-2 ">
-          <label className="text-xs text-gray-600 font-bold">{label}:</label>
+          <label className="block text-sm font-medium text-gray-600 mb-2">
+            {label}:
+          </label>
           <select
-            className="outline-none border-2 border-gray-300 p-3 rounded-md text-xs "
+            className="w-full border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 "
             {...register(accessor)}
           >
             {optionInput?.map((eachoption: any, index: number) => (
@@ -236,36 +242,38 @@ const FormInput = ({
           )}
         </div>
       ) : type === "textarea" ? (
-        <div className="w-full flex flex-col gap-2 ">
-          <label className="text-sm text-gray-600 font-bold">{label}:</label>
+        <div className="w-full flex flex-col gap-2 text-sm">
+          <label className="block text-sm font-medium text-gray-600 mb-2">
+            {label}:
+          </label>
           <textarea
             {...register(accessor)}
             id={accessor}
             rows={optionInput ? optionInput.row : 4}
             cols={optionInput ? optionInput.col : 6}
             placeholder="Write your text here..."
-            className="outline-none border-2 border-gray-300 px-2 py-4 rounded-md text-xs "
+            className="w-full border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 "
           />
 
-          <p className="text-red-400 text-xs">
+          <p className="text-red-400 text-sm">
             {errors?.[accessor]?.message?.toString()}
           </p>
         </div>
       ) : type === "radio" ? (
-        <div className="w-full flex flex-col gap-2 ">
+        <div className="w-full flex flex-col gap-2 text-sm">
           <p className="text-xs text-gray-600 font-bold">{label}:</p>
           <div className="flex items-center gap-5">
             {optionInput?.map((eachoption: any, index: number) => (
               <label
                 key={eachoption.title ? eachoption.title : eachoption}
-                className="text-xs flex gap-3"
+                className=" text-sm font-medium text-gray-600 mb-2 flex gap-3"
               >
                 <input
                   type={type}
                   {...register(accessor)}
                   value={eachoption.slug ? eachoption.slug : eachoption}
                   {...inputProps}
-                  className="outline-none border-2 border-gray-300 p-2 rounded-md text-xs"
+                  className="w-full border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <span>{eachoption.title ? eachoption.title : eachoption}</span>
               </label>
@@ -278,8 +286,11 @@ const FormInput = ({
           )}
         </div>
       ) : (
-        <div className="w-full flex flex-col gap-2 ">
-          <label htmlFor={accessor} className="text-xs text-gray-600 font-bold">
+        <div className="w-full flex flex-col gap-2 text-sm ">
+          <label
+            htmlFor={accessor}
+            className="block text-sm font-medium text-gray-600 mb-2"
+          >
             {label}:
           </label>
           <input
@@ -288,7 +299,7 @@ const FormInput = ({
             {...register(accessor)}
             // defaultValue={defaultValue}
             {...inputProps}
-            className="outline-none border-2 border-gray-300 p-3 rounded-md text-xs "
+            className="w-full border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 "
           />
 
           {accessor.includes(".") && errors ? (
@@ -336,13 +347,13 @@ const ConditionalFormInput = ({
 
   return (
     <div className="col-span-3 flex flex-col gap-3 ">
-      <p className="text-xs text-gray-600 font-bold">{label}:</p>
+      <p className="block text-sm font-medium text-gray-600 mb-2">{label}:</p>
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-5">
           {optionInput?.map((eachoption: any, index: number) => (
             <label
               key={eachoption.title ? eachoption.title : eachoption}
-              className="text-xs flex gap-3"
+              className="text-sm flex gap-3"
             >
               <input
                 type={"radio"}
@@ -350,14 +361,14 @@ const ConditionalFormInput = ({
                 {...register(accessor)}
                 value={eachoption.slug ? eachoption.slug : eachoption}
                 {...inputProps}
-                className="outline-none border-2 border-gray-300 p-2 rounded-md text-xs"
+                className="w-full border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <span>{eachoption.title ? eachoption.title : eachoption}</span>
             </label>
           ))}
         </div>
         {errors?.[accessor.split(".")[0]]?.value?.message && (
-          <p className="text-red-400 text-xs">
+          <p className="text-red-400 text-sm">
             {errors?.[accessor.split(".")[0]]?.value?.message.toString()}
           </p>
         )}
@@ -376,7 +387,7 @@ const ConditionalFormInput = ({
             ),
         )}
         {errors?.[accessor]?.message && (
-          <p className="text-red-400 text-xs">
+          <p className="text-red-400 text-sm">
             {errors?.[accessor]?.message.toString()}
           </p>
         )}

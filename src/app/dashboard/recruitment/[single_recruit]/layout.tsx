@@ -4,6 +4,7 @@ import RecruitmentProfile from "@/components/RecruitmentProfile";
 import type { Metadata } from "next";
 
 import { Suspense } from "react";
+import Navigation from "./_ui/Navigation";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -32,7 +33,7 @@ export default async function RootLayout({
 
   return (
     <div className="flex flex-col flex-1 gap-3 p-3 w-full h-full ">
-      <div className="">
+      <div className="p-8">
         <Suspense
           fallback={
             <LoadingState className="w-full flex justify-center items-center " />
@@ -41,6 +42,22 @@ export default async function RootLayout({
           <RecruitmentProfile id={single_recruit} />
         </Suspense>
       </div>
+      <Navigation
+        navLinks={[
+          {
+            menu: "Screening",
+            link: `/dashboard/recruitment/${single_recruit}/screening?query=personal_info`,
+          },
+          {
+            menu: "Reference",
+            link: `/dashboard/recruitment/${single_recruit}/reference`,
+          },
+          {
+            menu: "Training",
+            link: `/dashboard/recruitment/${single_recruit}/training`,
+          },
+        ]}
+      />
       <div className=" flex-1 w-full flex flex-col gap-3 md:overflow-y-auto ">
         <div className="flex-1 w-full overflow-y-auto">{children}</div>
       </div>

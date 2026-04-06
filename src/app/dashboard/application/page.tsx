@@ -1,19 +1,23 @@
+"use client";
 import LoadingState from "@/components/LoadingState";
 
-import React, { Suspense } from "react";
-import RedirectPage from "./_ui/RedirectPage";
+import React, { useEffect } from "react";
+import { AuthContext } from "@/Context/AuthContext";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const { user } = React.useContext(AuthContext);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push(
+      `/dashboard/application/${user.id}/screening?query=personal_info`,
+    );
+  }, [user]);
+
   return (
-    <div className="w-full h-full overflow-y-auto">
-      <Suspense
-        fallback={
-          <LoadingState className="w-full flex justify-center items-center " />
-        }
-      >
-        <RedirectPage />
-      </Suspense>
-    </div>
+    <LoadingState className="w-full h-full flex justify-center items-center " />
   );
 };
 

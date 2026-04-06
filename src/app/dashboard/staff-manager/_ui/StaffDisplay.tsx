@@ -1,4 +1,9 @@
 "use client";
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownTrigger,
+} from "@/components/Dropdown";
 import LoadingState from "@/components/LoadingState";
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
@@ -122,13 +127,13 @@ const StaffDisplay = () => {
             unoptimized
           />
           <div className="flex flex-col justify-center ">
-            <h3 className="text-xs font-bold text-gray-800 group-hover:underline underline-offset-2">
+            <h3 className="text-sm font-bold text-gray-800 group-hover:underline underline-offset-2">
               {eachRow.firstName + " " + eachRow.lastName}
             </h3>
-            <p className="text-xs text-gray-500">{eachRow.role.role}</p>
+            <p className="text-sm text-gray-500">{eachRow.role.role}</p>
           </div>
         </td>
-        <td className="hidden md:table-cell text-gray-800 text-xs px-4 py-2">
+        <td className="hidden md:table-cell text-gray-800 text-sm px-4 py-2">
           <p className="flex items-center gap-2">
             <span>
               <MdEmail />
@@ -136,7 +141,7 @@ const StaffDisplay = () => {
             {eachRow.email}
           </p>
         </td>
-        <td className="hidden lg:table-cell text-gray-800 text-xs px-4">
+        <td className="hidden lg:table-cell text-gray-800 text-sm px-4">
           <p className="flex items-center gap-2">
             <span>
               <CiLocationOn />
@@ -144,7 +149,7 @@ const StaffDisplay = () => {
             {eachRow.address}
           </p>
         </td>
-        <td className="hidden lg:table-cell text-gray-800 text-xs px-4">
+        <td className="hidden lg:table-cell text-gray-800 text-sm px-4">
           <p className="flex items-center gap-2">
             <span>
               <BiPhone />
@@ -153,51 +158,47 @@ const StaffDisplay = () => {
           </p>
         </td>
 
-        <td className="px-4">
-          <div className=" group relative flex items-center justify-center gap-2 cursor-pointer ">
-            <button className=" w-7 h-7 flex justify-center items-center rounded-full cursor-pointer">
-              <IoSettings className="text-xl text-gray-600" />
-            </button>
-
-            <div className="hidden group-hover:flex flex-col z-5 absolute w-50 right-[50%] top-1/2 -translate-x-3  bg-white rounded-sm shadow-lg shadow-black/10 border border-gray-200 ">
-              <p className="text-xs text-gray-500 p-2 hover:bg-gray-500/50 w-full hover:text-white transition-all duration-300 py-2 px-4 flex items-center gap-2">
+        <td className="px-4 flex justify-center align-center">
+          {" "}
+          <Dropdown>
+            <DropdownTrigger>
+              <button className=" w-7 h-7 flex justify-center items-center rounded-full cursor-pointer">
+                <IoSettings className="text-xl text-gray-600" />
+              </button>
+            </DropdownTrigger>
+            <DropdownContent>
+              <p className="text-sm text-gray-500 p-2 hover:bg-gray-500/50 w-full hover:text-white transition-all duration-300 py-2 px-4 flex items-center gap-2">
                 <span className="">
                   <FaUser />
                 </span>
                 View Profile
               </p>
-              <p className="text-xs text-gray-500 p-2 hover:bg-gray-500/50 w-full hover:text-white transition-all duration-300 py-2 px-4 flex items-center gap-2">
+              <p className="text-sm text-gray-500 p-2 hover:bg-gray-500/50 w-full hover:text-white transition-all duration-300 py-2 px-4 flex items-center gap-2">
                 <span className="">
                   <MdEmail />
                 </span>
                 Send Email
               </p>
-              <p className="text-xs text-gray-500 p-2 hover:bg-gray-500/50 w-full hover:text-white transition-all duration-300 py-2 px-4 flex items-center gap-2">
+              <p className="text-sm text-gray-500 p-2 hover:bg-gray-500/50 w-full hover:text-white transition-all duration-300 py-2 px-4 flex items-center gap-2">
                 <span className="">
                   <BiSend />
                 </span>
                 Send/Resend Invitation
               </p>
-              <p className="text-xs text-gray-500 p-2 hover:bg-gray-500/50 w-full hover:text-white transition-all duration-300 py-2 px-4 flex items-center gap-2">
+              <p className="text-sm text-gray-500 p-2 hover:bg-gray-500/50 w-full hover:text-white transition-all duration-300 py-2 px-4 flex items-center gap-2">
                 <span className="">
                   <BiBook />
                 </span>
                 Notes
               </p>
-              <p className="text-xs text-gray-500 p-2 hover:bg-gray-500/50 w-full hover:text-white transition-all duration-300 py-2 px-4 flex items-center gap-2">
-                <span className="">
-                  <FaDeleteLeft />
-                </span>
-                Reject Applicant
-              </p>
-            </div>
-          </div>
+            </DropdownContent>
+          </Dropdown>
         </td>
       </tr>
     );
   };
   return (
-    <div className="bg-white p-3 rounded-md h-full overflow-y-auto">
+    <div className=" h-full overflow-y-auto">
       {allUsers &&
         (loadingState.loading ? (
           <LoadingState className="w-full flex justify-center items-center " />

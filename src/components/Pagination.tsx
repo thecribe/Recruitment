@@ -36,7 +36,7 @@ const Pagination = ({
       {/* Prev */}
       <button
         disabled={currentPage <= 1}
-        className={`py-1 px-3 rounded-md bg-slate-200 text-xs font-semibold ${
+        className={`py-1 px-3 rounded-md bg-slate-200 text-sm font-semibold ${
           currentPage <= 1
             ? "disabled:opacity-50 disabled:cursor-not-allowed"
             : "cursor-pointer"
@@ -47,7 +47,7 @@ const Pagination = ({
       </button>
 
       {/* Pages */}
-      <div className="flex gap-2 items-center text-xs">
+      <div className="flex gap-2 items-center text-sm">
         {/* First page */}
         {start > 1 && (
           <>
@@ -94,7 +94,7 @@ const Pagination = ({
       {/* Next */}
       <button
         disabled={currentPage >= totalPages}
-        className={`py-1 px-3 rounded-md bg-slate-200 text-xs font-semibold ${
+        className={`py-1 px-3 rounded-md bg-slate-200 text-sm font-semibold ${
           currentPage >= totalPages
             ? "disabled:opacity-50 disabled:cursor-not-allowed"
             : "cursor-pointer"

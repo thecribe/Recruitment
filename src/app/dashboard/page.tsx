@@ -81,7 +81,7 @@ const ApplicantDashboard = () => {
             </div>
             <div>
               <p className="text-sm text-gray-500">Estimated Completion Time</p>
-              <p className="font-medium">15–20 minutes</p>
+              <p className="font-medium">{`15-20 minutes`}</p>
             </div>
           </div>
         </div>

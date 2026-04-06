@@ -86,7 +86,7 @@ const ManageProfile = ({ id, type }: { id: string; type?: string }) => {
         />
       )}
       <div className="w-full h-full flex flex-col lg:flex-row gap-3">
-        <div className="w-full lg:w-1/6 shadow-sm rounded-md flex lg:flex-col items-center  p-3">
+        <div className="w-full lg:w-1/6 shadow-sm rounded-md flex lg:flex-col items-center  p-4">
           <NavigationPanel />
         </div>
         {loadingState ? (
@@ -142,15 +142,13 @@ const NavigationPanel = () => {
         return (
           item.access.includes(user?.role.slug.toLowerCase()) && (
             <div
+              className="w-full flex items-center gap-3 px-5 py-4 hover:bg-indigo-50 hover:text-indigo-700 rounded-2xl font-medium cursor-pointer"
               key={index}
               onClick={() => setPanelSwitch(index + 1)}
-              className="w-full  rounded-md hover:bg-gray-500/10 cursor-pointer hover:shadow-sm hover:shadow-black/10 active:scale-95 active:shadow-black/10 transition-all duration-300 px-2"
             >
-              <div className="flex items-center justify-center md:justify-start gap-2  py-2">
-                <span className="text-gray-500 text-lg md:text-base">
-                  {item.icon}
-                </span>
-                <span className="text-gray-500 hidden md:block text-xs ">
+              <div className="flex items-center justify-center md:justify-start gap-2 ">
+                <span className="text-gray-600 text-sm">{item.icon}</span>
+                <span className="font-medium hidden md:block text-sm ">
                   {item.name}
                 </span>
               </div>
@@ -341,16 +339,16 @@ const ManagePassword = () => {
   ) : (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-2">
-        <label className="text-xs text-gray-600 font-bold">
+        <label className="text-sm font-medium text-gray-600 mb-2 flex gap-3">
           Current Password:
         </label>
-        <p className="text-xs italic text-blue-400">
+        <p className="text-sm italic text-blue-400">
           Leave Empty if you do not have a password set
         </p>
         <input
           type="password"
           placeholder="Enter current password"
-          className="outline-none border-2 border-gray-300 p-2 rounded-md text-xs md:w-[50%] lg:w-1/3 "
+          className="border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 md:w-[50%] lg:w-1/3 "
           id="current_password"
           name="current_password"
           value={formInput.current_password.input}
@@ -365,17 +363,19 @@ const ManagePassword = () => {
           }
         />
         {formInput.current_password.error && (
-          <p className="text-xs text-red-500">
+          <p className="text-sm text-red-500">
             {formInput.current_password.error}
           </p>
         )}
       </div>
       <div className="flex flex-col gap-2">
-        <label className="text-xs text-gray-600 font-bold">New Password:</label>
+        <label className="text-sm font-medium text-gray-600 mb-2 flex gap-3">
+          New Password:
+        </label>
         <input
           type="password"
           placeholder="Enter new password"
-          className="outline-none border-2 border-gray-300 p-2 rounded-md text-xs md:w-[50%] lg:w-1/3 "
+          className="border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 md:w-[50%] lg:w-1/3 "
           id="new_password"
           name="new_password"
           value={formInput.new_password.input}
@@ -390,17 +390,17 @@ const ManagePassword = () => {
           }
         />
         {formInput.new_password.error && (
-          <p className="text-xs text-red-500">{formInput.new_password.error}</p>
+          <p className="text-sm text-red-500">{formInput.new_password.error}</p>
         )}
       </div>
       <div className="flex flex-col gap-2">
-        <label className="text-xs text-gray-600 font-bold">
+        <label className="text-sm font-medium text-gray-600 mb-2 flex gap-3">
           Confirm Password:
         </label>
         <input
           type="password"
           placeholder="Enter new password again"
-          className="outline-none border-2 border-gray-300 p-2 rounded-md text-xs md:w-[50%] lg:w-1/3 "
+          className="border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 md:w-[50%] lg:w-1/3 "
           id="confirm_password"
           name="confirm_password"
           value={formInput.confirm_password.input}
@@ -415,14 +415,14 @@ const ManagePassword = () => {
           }
         />
         {formInput.confirm_password.error && (
-          <p className="text-xs text-red-500">
+          <p className="text-sm text-red-500">
             {formInput.confirm_password.error}
           </p>
         )}
       </div>
       <button
         onClick={handleSubmit}
-        className="text-xs w-fit bg-blue-500/50 px-3 py-1 rounded-md cursor-pointer hover:bg-blue-500/70 hover:scale-105 shadow-xs hover:shadow-black/30 active:shadow-black/10 active:scale-95 transition-all duration-300"
+        className="text-sm w-fit bg-blue-500/50 px-10 py-3.5 rounded-md cursor-pointer hover:bg-blue-500/70 hover:scale-105 shadow-xs hover:shadow-black/30 active:shadow-black/10 active:scale-95 transition-all duration-300"
       >
         Update
       </button>
@@ -468,11 +468,11 @@ const ManageRole = () => {
   return (
     <div className="flex flex-col gap-3">
       <div className=" flex flex-col gap-2 w-full md:w-1/3 ">
-        <label className="text-xs text-gray-600 font-bold">
+        <label className="text-sm font-medium text-gray-600 mb-2 flex gap-3">
           Current Status:
         </label>
         <select
-          className="outline-none border-2 border-gray-300 p-2 rounded-md text-xs "
+          className="border border-gray-300 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 "
           onChange={(e) => setInput(e.target.value)}
           value={input}
         >
@@ -488,7 +488,7 @@ const ManageRole = () => {
         </select>
       </div>
       <button
-        className="text-xs w-fit bg-blue-500/50 px-3 py-1 rounded-md cursor-pointer hover:bg-blue-500/70 hover:scale-105 shadow-xs hover:shadow-black/30 active:shadow-black/10 active:scale-95 transition-all duration-300"
+        className="text-sm w-fit bg-blue-500/50 px-10 py-3.5 rounded-md cursor-pointer hover:bg-blue-500/70 hover:scale-105 shadow-xs hover:shadow-black/30 active:shadow-black/10 active:scale-95 transition-all duration-300"
         onClick={handleSubmit}
       >
         Save
@@ -524,7 +524,7 @@ const AdminResetPassword = () => {
         security purposes.
       </p>
       <button
-        className="text-xs w-fit bg-blue-500/50 p-3 rounded-md cursor-pointer hover:bg-blue-500/70 hover:scale-105 shadow-xs hover:shadow-black/30 active:shadow-black/10 active:scale-95 transition-all duration-300"
+        className="text-sm w-fit bg-blue-500/50 p-3 rounded-md cursor-pointer hover:bg-blue-500/70 hover:scale-105 shadow-xs hover:shadow-black/30 active:shadow-black/10 active:scale-95 transition-all duration-300"
         onClick={sendPasswordRestLink}
       >
         Send Password Reset Link to User's Email
