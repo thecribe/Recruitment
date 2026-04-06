@@ -1,31 +1,26 @@
-// server.js
 const { createServer } = require("http");
 const { parse } = require("url");
 const next = require("next");
 
-// Detect environment
 const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev });
+const hostname = "localhost";
+const port = parseInt(process.env.PORT, 10) || 3000; // Passenger sets PORT
+
+const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
 
-// Port from environment or default
-const port = process.env.PORT || 3000;
-
-// Start server in async function
-const start = async () => {
-  try {
-    await app.prepare();
-
-    createServer((req, res) => {
+app.prepare().then(() => {
+  createServer(async (req, res) => {
+    try {
       const parsedUrl = parse(req.url, true);
-      handle(req, res, parsedUrl);
-    }).listen(port, () => {
-      console.log(`> Server running on http://localhost:${port}`);
-    });
-  } catch (err) {
-    console.error("Error starting server:", err);
-    process.exit(1);
-  }
-};
-
-start();
+      await handle(req, res, parsedUrl);
+    } catch (err) {
+      console.error("Error occurred handling", req.url, err);
+      res.statusCode = 500;
+      res.end("Internal server error");
+    }
+  }).listen(port, (err) => {
+    if (err) throw err;
+    console.log(`> Ready on http://${hostname}:${port}`);
+  });
+});

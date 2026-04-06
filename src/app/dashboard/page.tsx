@@ -51,6 +51,7 @@ const ApplicantDashboard = () => {
     getData();
   }, [user]);
 
+  console.log(completionRate);
   return (
     <div className="p-8">
       {/* <!-- Overall Progress --> */}
